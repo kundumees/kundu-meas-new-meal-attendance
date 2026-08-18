@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Sheet</title>
+  <link rel="stylesheet" href="style.css">
+  <style>l
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      font-size: 18px; /* Increased base font size */
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 36px; /* Increased */
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px; /* Increased */
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 22px; /* Increased */
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      font-size: 18px; /* Increased */
+    }
+    
+    th, td {
+      border: 1px solid #000;
+      padding: 12px; /* Increased padding */
+      text-align: center;
+    }
+    
+    th {
+      background: #f2f2f2;
+    }
+    
+    /* Bigger form inputs and labels */
+    label {
+      font-size: 18px;
+      display: inline-block;
+      min-width: 150px;
+    }
+
+    input, select {
+      font-size: 18px; /* Increased text size inside elements */
+      padding: 8px 12px; /* Increased padding */
+      margin: 5px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    
+    button {
+      padding: 12px 24px; /* Increased button size */
+      margin: 10px 5px;
+      cursor: pointer;
+      font-size: 18px; /* Increased text size */
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    
+    .total {
+      font-weight: bold;
+      background: #e8ffe8;
+    }
+
+    /* Print Specific Styles */
+    @media print {
+      /* Hide all forms, buttons, and section breaks when printing */
+      button, hr, h3, label, input, select, br {
+        display: none !important;
+      }
+      body {
+        padding: 0;
+        font-size: 16px;
+      }
+      table {
+        width: 100%;
+        margin-top: 10px;
+      }
+      th, td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💰 Kundu Mees</h1>
+  <h2>Income Sheet (Admin Only)</h2>
+  
+  <button onclick="location.href='admin.html'">⬅ Back</button>
+  <hr>
+  
+  <label><b>📅 Select Month:</b></label>
+  <input type="month" id="incomeMonth">
+  <button id="loadIncome">Load Income</button>
+  <hr>
+  
+  <h3>➕ Add Deposit</h3>
+  
+  <label>👤 Member :</label>
+  <select id="member">
+    <option value="">Select Member</option>
+    <option>Ramu</option>
+    <option>Nabin</option>
+    <option>Sovon</option>
+    <option>Suman</option>
+    <option>Riman</option>
+    <option>Dipankar</option>
+    <option>Krishna</option>
+    <option>Pradip</option>
+    <option>Santu</option>
+    <option>Madhav</option>
+    <option>Deep</option>
+    <option>Mohit</option>
+    <option>Suman 2</option>
+    <option>Surojit</option>
+    <option>Bikash</option>
+    <option>Riju</option>
+  </select>
+  <br><br>
+  
+  <label>📅 Date :</label>
+  <input type="date" id="incomeDate">
+  <br><br>
+  
+  <label>💰 Amount :</label>
+  <input type="number" id="amount" placeholder="Enter Amount">
+  <br><br>
+  
+  <button id="saveIncome">💾 Save Deposit</button>
+  <hr>
+  
+  <h2>📄 Member-wise Income Summary</h2>
+  
+  <table id="incomeSummaryTable">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Deposit History</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="incomeSummaryBody">
+      <!-- JavaScript will create rows -->
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="2">💰 Grand Total Income</th>
+        <th id="summaryGrandTotal">₹0</th>
+      </tr>
+    </tfoot>
+  </table>
+  
+  <br>
+  
+  <button id="printIncome">🖨️ Print Income Summary</button>
+
+  <script>
+    // Set default month and date elements 
+    document.getElementById("incomeMonth").value = new Date().toISOString().slice(0,7);
+    document.getElementById("incomeDate").value = new Date().toISOString().split("T")[0];
+    
+    // Working Print Handler
+    document.getElementById("printIncome").addEventListener("click", function() {
+      window.print();
+    });
+  </script>
+  
+  <script type="module" src="income.js"></script>
+</body>
+</html>

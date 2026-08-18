@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kundu Mees - Rice Expenses</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 8px 5px 8px 0;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #eee;
+        }
+
+        .total {
+            font-weight: bold;
+            background: #f5f5f5;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>🏠 Kundu Mees</h1>
+
+    <h2>🍚 Rice Expenses</h2>
+
+    <button type="button" onclick="location.href='admin.html'">
+        ⬅ Back
+    </button>
+
+    <hr>
+
+
+    <!-- =============================== -->
+    <!-- ADD RICE EXPENSE -->
+    <!-- =============================== -->
+
+    <h3>➕ Add Rice Expense</h3>
+
+    <label>
+        <b>📅 Date:</b>
+    </label>
+
+    <br>
+
+    <input
+        type="date"
+        id="riceDate"
+    >
+
+    <br><br>
+
+
+    <label>
+        <b>🍚 Rice Amount:</b>
+    </label>
+
+    <br>
+
+    <input
+        type="number"
+        id="riceAmount"
+        placeholder="Enter Rice Amount"
+        min="0"
+        step="0.01"
+    >
+
+    <br><br>
+
+
+    <label>
+        <b>📝 Remarks:</b>
+    </label>
+
+    <br>
+
+    <input
+        type="text"
+        id="riceRemarks"
+        placeholder="Example: Rice purchase"
+    >
+
+    <br><br>
+
+
+    <button
+        type="button"
+        id="saveRice"
+    >
+        💾 Save Rice Expense
+    </button>
+
+
+    <div id="status"></div>
+
+
+    <hr>
+
+
+    <!-- =============================== -->
+    <!-- MONTHLY RICE REPORT -->
+    <!-- =============================== -->
+
+    <h2>📊 Rice Expense Report</h2>
+
+    <label>
+        <b>📅 Select Month:</b>
+    </label>
+
+    <br>
+
+    <input
+        type="month"
+        id="riceMonth"
+    >
+
+    <br><br>
+
+    <button
+        type="button"
+        id="loadRice"
+    >
+        📊 Load Report
+    </button>
+
+    <button
+        type="button"
+        onclick="window.print()"
+    >
+        🖨️ Print
+    </button>
+
+
+    <!-- =============================== -->
+    <!-- RICE TABLE -->
+    <!-- =============================== -->
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>📅 Date</th>
+
+                <th>🍚 Rice Amount</th>
+
+                <th>📝 Remarks</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="riceBody">
+
+        </tbody>
+
+        <tfoot>
+
+            <tr class="total">
+
+                <th>
+                    MONTH TOTAL
+                </th>
+
+                <th id="riceTotal">
+                    ₹0.00
+                </th>
+
+                <th>
+                    -
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+
+    <hr>
+
+
+    <!-- =============================== -->
+    <!-- SCRIPT -->
+    <!-- =============================== -->
+
+    <script
+        type="module"
+        src="rice.js">
+    </script>
+
+</body>
+
+</html>

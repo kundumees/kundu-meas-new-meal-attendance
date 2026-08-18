@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Expenses</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; font-size: 22px; background-color: #fdfdfd; }
+        h1 { font-size: 42px; text-align: center; margin-bottom: 10px; }
+        h2 { font-size: 32px; text-align: center; margin-top: 30px; }
+        label { font-size: 24px; display: inline-block; margin-bottom: 8px; }
+        input, select { font-size: 22px; padding: 12px; width: 100%; max-width: 450px; box-sizing: border-box; border: 2px solid #555; border-radius: 6px; }
+        button { font-size: 22px; font-weight: bold; padding: 15px 30px; margin: 15px 5px; cursor: pointer; border-radius: 8px; border: 2px solid #333; }
+        #saveExpense { background-color: #28a745; color: white; border: none; }
+        #loadExpense { background-color: #ffc107; color: black; border: none; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; font-size: 22px; }
+        th, td { border: 2px solid black; padding: 14px; text-align: center; }
+        th { background: #e2e2e2; font-size: 24px; }
+        .total { font-weight: bold; background-color: #f9f9f9; }
+        .summary { margin-top: 30px; font-size: 32px; font-weight: bold; text-align: center; color: green; border: 2px dashed green; padding: 15px; background-color: #f0fff0; }
+        hr { margin: 40px 0; border: 0; border-top: 3px double #333; }
+        @media print { button, hr, label, input, select, .no-print { display: none !important; } html, body { font-size: 18pt !important; color: #000 !important; background: white !important; padding: 0 !important; margin: 0 !important; } h1 { font-size: 28pt !important; } h2 { font-size: 22pt !important; border-bottom: 2px solid #000; } table { font-size: 16pt !important; } th, td { padding: 12pt !important; border: 3px solid #000 !important; } th { background-color: #ddd !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; } .summary { font-size: 24pt !important; border: 3px solid #000 !important; background: transparent !important; } }
+    </style>
+</head>
+<body>
+    <div class="no-print">
+        <h1>🏠 Kundu Mees</h1>
+        <h2>Monthly Expenses (Admin Only)</h2>
+        <button onclick="location.href='admin.html'">⬅ Back</button>
+        <hr>
+
+        <label><b>📅 Date :</b></label><br>
+        <input type="date" id="expenseDate"><br><br>
+
+        <label><b>Expense Category :</b></label><br>
+        <select id="category">
+            <option value="">Select Category</option>
+            <option value="Gas 1">Gas 1</option>
+            <option value="Gas 2">Gas 2</option>
+            <option value="Electricity">Electricity</option>
+            <option value="Cook Charge (Masi)">Cook Charge (Masi)</option>
+            <option value="Bathroom Wash">Bathroom Wash</option>
+            <option value="WiFi">WiFi</option>
+            
+            <option value="Extra Expenses">Extra Expenses</option>
+        </select><br><br>
+
+        <label><b>💰 Amount :</b></label><br>
+        <input type="number" id="amount" placeholder="Enter Amount"><br><br>
+
+        <label><b>📝 Remarks :</b></label><br>
+        <input type="text" id="remarks" placeholder="Write Details"><br><br>
+
+        <button id="saveExpense">💾 Save Expense</button>
+        <hr>
+    </div>
+
+    <h2>📋 Monthly Expense History</h2>
+    <div class="no-print" style="text-align: center;">
+        <label><b>📅 Select Month :</b></label>
+        <input type="month" id="expenseMonth" style="width: 250px;"><br>
+        <button id="loadExpense">Load</button>
+        <button id="printReport" style="background-color: #007bff; color: white; border: none;">🖨️ Print Summary</button>
+    </div>
+
+    <table>
+        <thead><tr><th>Date</th><th>Category</th><th>Amount</th><th>Remarks</th></tr></thead>
+        <tbody id="expenseBody">
+            <!-- Plain clean HTML string to prevent syntax crashes -->
+            <tr><td colspan="4">Loading data...</td></tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <h2>📊 Expense Summary</h2>
+    <table>
+        <thead><tr><th>Category</th><th>Date</th><th>Amount</th></tr></thead>
+        <tbody>
+            <tr><td>Gas 1</td><td id="gas1Date">-</td><td id="gas1Total">₹0.00</td></tr>
+            <tr><td>Gas 2</td><td id="gas2Date">-</td><td id="gas2Total">₹0.00</td></tr>
+            <tr><td>Electricity</td><td id="electricityDate">-</td><td id="electricityTotal">₹0.00</td></tr>
+            <tr><td>Cook Charge (Masi)</td><td id="cookDate">-</td><td id="cookTotal">₹0.00</td></tr>
+            <tr><td>Bathroom Wash</td><td id="bathroomDate">-</td><td id="bathroomTotal">₹0.00</td></tr>
+            <tr><td>WiFi</td><td id="wifiDate">-</td><td id="wifiTotal">₹0.00</td></tr>
+            
+            <tr><td>Extra Expenses</td><td id="extraDate">-</td><td id="extraTotal">₹0.00</td></tr>
+            <tr class="total"><td colspan="2">💰 Total Monthly Expenses</td><td id="tableGrandTotal">₹0.00</td></tr>
+        </tbody>
+    </table>
+    <div class="summary">💰 Total Monthly Expenses : <span id="divGrandTotal">₹0.00</span></div>
+
+    <!-- The only script call permitted on the entire page -->
+    <script type="module" src="monthly.js"></script>
+</body>
+</html>

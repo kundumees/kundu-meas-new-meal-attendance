@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  input {
+    font-size: 20px;
+    padding: 12px 20px;
+    width: 80%;
+    max-width: 400px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+  }
+
+  button {
+    font-size: 22px;
+    padding: 12px 30px;
+    margin: 10px 5px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+  }
+</style>
+
+</head>
+
+<body>
+
+<h1>🔐 Kundu Mees Hosel</h1>
+
+<h2>Admin Login</h2>
+
+<p>Only the administrator can log in.</p>
+
+<br>
+
+<input
+type="email"
+id="email"
+placeholder="Enter Admin Email"
+autocomplete="email">
+
+<br><br>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+autocomplete="current-password">
+
+<br><br>
+
+<button id="login">
+🔑 Login
+</button>
+
+<br><br>
+
+<button onclick="location.href='index.html'">
+🏠 Back to Home
+</button>
+
+<script type="module" src="login.js"></script>
+
+</body>
+
+</html>

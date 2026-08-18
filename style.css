@@ -1,0 +1,41 @@
+@media print {
+    button {
+        display: none;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    table {
+        width: 100%;
+        font-size: 12px;
+    }
+}
+@media print {
+
+    @page{
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    body{
+        margin:0;
+    }
+
+    table{
+        width:100%;
+        border-collapse:collapse;
+        font-size:9px;
+    }
+
+    th,td{
+        padding:2px;
+        border:1px solid black;
+    }
+
+    button{
+        display:none;
+    }
+
+}

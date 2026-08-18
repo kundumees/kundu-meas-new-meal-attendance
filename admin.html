@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+  /* Embedded styles to scale up all visual elements */
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.25rem; /* Increased base text size */
+  }
+
+  h1 {
+    font-size: 3rem; /* Larger main title */
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 2rem; /* Larger subtitle */
+    color: #555;
+    margin-top: 0;
+  }
+
+  hr {
+    margin: 25px 0;
+    border: 1px solid #ccc;
+  }
+
+  /* Unified, larger, touch-friendly button styling */
+  button {
+    display: block;
+    width: 100%;
+    padding: 18px 24px; /* Generous padding for a larger hit target */
+    font-size: 1.4rem; /* Larger button text */
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px; /* Replaces <br><br> for cleaner spacing */
+    border: 2px solid #333;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #eef;
+    transform: translateY(-2px);
+  }
+
+  /* Specific styling to make the logout button stand out */
+  #logout {
+    background-color: #ffebee;
+    border-color: #d32f2f;
+    color: #d32f2f;
+    margin-top: 40px; /* Extra separation for safety */
+  }
+
+  #logout:hover {
+    background-color: #ffcdd2;
+  }
+</style>
+
+</head>
+
+<body>
+
+<h1>🔐 Kundu Mees</h1>
+
+<h2>Admin Dashboard</h2>
+
+<hr>
+
+<!-- Removed manual <br> tags in favor of clean CSS margins -->
+<button onclick="location.href='attendance.html'">
+📅 Attendance
+</button>
+
+<button onclick="location.href='income.html'">
+💰 Income
+</button>
+
+<button onclick="location.href='regular.html'">
+🛒 Regular Expenses
+</button>
+
+<button onclick="location.href='monthly.html'">
+🏠 Monthly Expenses
+</button>
+
+<button onclick="location.href='rice.html'">
+🍚 Rice Expenses
+</button>
+
+<button onclick="location.href='charges.html'">
+⚠️ Charges
+</button>
+
+<button onclick="location.href='final-report.html'">
+📊 Reports
+</button>
+
+<button onclick="location.href='balance.html'">
+📒 Balance Sheet
+</button>
+
+<button id="logout">
+🚪 Logout
+</button>
+
+<script type="module">
+
+import { auth } from "./firebase.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+
+document.getElementById("logout").onclick = async()=>{
+
+await signOut(auth);
+
+alert("Logged Out Successfully");
+
+window.location.href="index.html";
+
+};
+
+</script>
+
+</body>
+</html>

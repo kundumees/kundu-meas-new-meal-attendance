@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Kundu Mees - Total Meal Report</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<h1>🏠 Kundu Mees</h1>
+
+<h2>🍽️ Total Meal Report</h2>
+
+
+<!-- ========================================= -->
+<!-- MONTH SELECT -->
+<!-- ========================================= -->
+
+<label for="reportMonth">
+
+    <b>📅 Select Month:</b>
+
+</label>
+
+<br>
+
+<input
+    type="month"
+    id="reportMonth">
+
+
+<br><br>
+
+
+<!-- ========================================= -->
+<!-- LOAD REPORT -->
+<!-- ========================================= -->
+
+<button
+    type="button"
+    id="loadReport">
+
+    📊 Load Total Meal Report
+
+</button>
+
+
+<br><br>
+
+
+<!-- ========================================= -->
+<!-- TOTAL SUMMARY -->
+<!-- ========================================= -->
+
+<div id="summary">
+
+    <h3>📊 Monthly Total</h3>
+
+    <p>
+        🌞 Total Day Meal:
+        <strong id="monthDayMeal">0</strong>
+    </p>
+
+
+    <p>
+        🌙 Total Night Meal:
+        <strong id="monthNightMeal">0</strong>
+    </p>
+
+
+    <p>
+        🍽️ Overall Total Meal:
+        <strong id="monthTotalMeal">0</strong>
+    </p>
+
+</div>
+
+
+<hr>
+
+
+<!-- ========================================= -->
+<!-- DATE WISE REPORT -->
+<!-- ========================================= -->
+
+<h3>📅 Date-wise Total Meal</h3>
+
+
+<table id="totalMealTable">
+
+    <thead>
+
+        <tr>
+
+            <th>Date</th>
+
+            <th>🌞 Day Meal</th>
+
+            <th>🌙 Night Meal</th>
+
+            <th>🍽️ Total Meal</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody id="totalMealList">
+
+    </tbody>
+
+
+    <tfoot>
+
+        <tr>
+
+            <th>MONTH TOTAL</th>
+
+            <th id="footerDay">0</th>
+
+            <th id="footerNight">0</th>
+
+            <th id="footerTotal">0</th>
+
+        </tr>
+
+    </tfoot>
+
+</table>
+
+
+<br>
+
+
+<!-- ========================================= -->
+<!-- BACK BUTTON -->
+<!-- ========================================= -->
+
+<button
+    type="button"
+    onclick="history.back()">
+
+    ⬅️ Back
+
+</button>
+
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script
+    type="module"
+    src="total-meal-report.js">
+</script>
+
+
+</body>
+
+</html>

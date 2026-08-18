@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kundu Mees - Final Report</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    padding:20px;
+    max-width:1200px;
+    margin:auto;
+    background:#f5f5f5;
+}
+
+h1{
+    text-align:center;
+}
+
+h2{
+    text-align:center;
+    margin-top:25px;
+}
+
+button{
+    padding:11px 18px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    margin:5px;
+    border-radius:6px;
+    border:1px solid #333;
+}
+
+input,
+select{
+    padding:9px;
+    font-size:17px;
+    border:1px solid #777;
+    border-radius:5px;
+}
+
+.controls{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+    text-align:center;
+}
+
+.report-box{
+    background:white;
+    padding:20px;
+    margin-top:25px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+
+th,
+td{
+    border:1px solid #333;
+    padding:10px;
+    text-align:center;
+    white-space:nowrap;
+}
+
+th{
+    background:#eeeeee;
+}
+
+.total-row{
+    font-weight:bold;
+    background:#e8f5e9;
+}
+
+.rate-row{
+    font-size:20px;
+    font-weight:bold;
+    background:#fff3cd;
+}
+
+.establishment-row{
+    font-size:20px;
+    font-weight:bold;
+    background:#e3f2fd;
+}
+
+input.editable{
+    width:100px;
+    text-align:center;
+}
+
+.status{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.small{
+    font-size:14px;
+}
+
+.regular-section{
+    background:#f1f8e9;
+}
+
+.extra-section{
+    background:#fff8e1;
+}
+
+.guest-section{
+    background:#f0f8ff;
+}
+
+.final-meal-section{
+    background:#f3e5f5;
+}
+
+.establishment-section{
+    background:#e8f5e9;
+}
+
+.final-section{
+    background:#ffffff;
+}
+
+.delete-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+}
+
+.add-btn{
+    background:#28a745;
+    color:white;
+    border:none;
+}
+
+@media print{
+
+    button,
+    .controls,
+    .no-print{
+        display:none !important;
+    }
+
+    body{
+        background:white;
+        padding:0;
+        max-width:none;
+    }
+
+    .report-box{
+        border:none;
+        overflow:visible;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================================================= -->
+<!-- HEADER -->
+<!-- ================================================= -->
+
+<h1>🏠 Kundu Mees</h1>
+
+<h2>📊 Final Monthly Report</h2>
+
+
+<!-- ================================================= -->
+<!-- CONTROL -->
+<!-- ================================================= -->
+
+<div class="controls no-print">
+
+    <label>
+        <b>📅 Select Month:</b>
+    </label>
+
+    <br><br>
+
+    <input
+        type="month"
+        id="reportMonth">
+
+    <br><br>
+
+
+    <label>
+        <b>🍽️ Bonus Meal:</b>
+    </label>
+
+    <br>
+
+    <select id="bonusMeal">
+
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+        <option value="32">32</option>
+        <option value="33">33</option>
+        <option value="34">34</option>
+        <option value="35">35</option>
+        <option value="36">36</option>
+        <option value="37">37</option>
+        <option value="38">38</option>
+        <option value="39">39</option>
+        <option value="40">40</option>
+        <option value="41">41</option>
+        <option value="42">42</option>
+        <option value="43">43</option>
+        <option value="44">44</option>
+        <option value="45" selected>45</option>
+        <option value="46">46</option>
+        <option value="47">47</option>
+        <option value="48">48</option>
+        <option value="49">49</option>
+        <option value="50">50</option>
+
+    </select>
+
+    <br><br>
+
+    <button
+        type="button"
+        id="loadReport">
+        📊 Load Final Report
+    </button>
+
+    <button
+        type="button"
+        onclick="window.print()">
+        🖨️ Print Report
+    </button>
+
+    <button
+        type="button"
+        onclick="history.back()">
+        ⬅️ Back
+    </button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- STATUS -->
+<!-- ================================================= -->
+
+<div
+    id="status"
+    class="status">
+</div>
+
+
+<!-- ================================================= -->
+<!-- MEAL RATE -->
+<!-- ================================================= -->
+
+<div class="report-box">
+
+    <h2>🍽️ Meal Rate Calculation</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Particular</th>
+                <th>Amount</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>🛒 Regular Expenses</td>
+                <td id="regularExpense">₹0.00</td>
+            </tr>
+
+            <tr>
+                <td>🍚 Rice Expenses</td>
+                <td id="riceExpense">₹0.00</td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    👩‍🍳 Masi Meal Charge
+                </td>
+
+                <td>
+
+                    <input
+                        type="number"
+                        id="masiMealCharge"
+                        class="editable"
+                        value="2200"
+                        min="0">
+
+                </td>
+
+            </tr>
+
+            <tr class="total-row">
+
+                <td>
+                    Meal Cost
+                </td>
+
+                <td id="mealCost">
+                    ₹0.00
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    🍽️ Total Meal
+                </td>
+
+                <td>
+
+                    <input
+                        type="number"
+                        id="totalMeal"
+                        class="editable"
+                        value="0"
+                        min="0">
+
+                </td>
+
+            </tr>
+
+            <tr class="rate-row">
+
+                <td>
+                    💰 Meal Rate
+                </td>
+
+                <td id="mealRate">
+                    ₹0.00
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p class="small">
+
+        Meal Rate =
+        (Regular Expenses + Rice Expenses − Masi Meal Charge)
+        ÷ Total Meal
+
+    </p>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- REGULAR MEAL -->
+<!-- ================================================= -->
+
+<div class="report-box regular-section">
+
+    <h2>👥 Regular Meal</h2>
+
+    <p>
+
+        Bonus Meal:
+        <strong id="bonusMealDisplay">
+            45
+        </strong>
+
+    </p>
+
+    <table id="regularTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Member</th>
+                <th>Regular Day</th>
+                <th>Regular Night</th>
+                <th>Actual Meal</th>
+                <th>Counted Regular Meal</th>
+                <th>Meal Charge</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="regularBody"></tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th colspan="3">
+                    REGULAR TOTAL
+                </th>
+
+                <th id="regularActualTotal">
+                    0
+                </th>
+
+                <th id="regularCountedTotal">
+                    0
+                </th>
+
+                <th id="regularChargeTotal">
+                    ₹0.00
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEAL -->
+<!-- ================================================= -->
+
+<div class="report-box extra-section">
+
+    <h2>🍽️ Extra Meal</h2>
+
+    <p class="small">
+
+        Extra Meal is separate from Regular Meal.
+        Meal Charge is shown in written format.
+
+    </p>
+
+    <table id="extraTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Member</th>
+                <th>🌞 Day</th>
+                <th>🌙 Night</th>
+                <th>🥚 Egg</th>
+                <th>🐟 Fish</th>
+                <th>🍗 Chicken</th>
+                <th>Total Extra</th>
+                <th>Meal Charge</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="extraBody"></tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th colspan="6">
+                    EXTRA TOTAL
+                </th>
+
+                <th id="extraGrandTotal">
+                    0
+                </th>
+
+                <th id="extraGrandCharge">
+                    ₹0.00
+                </th>
+
+                <th></th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- GUEST MEAL -->
+<!-- ================================================= -->
+
+<div class="report-box guest-section">
+
+    <h2>👤 Guest Meal</h2>
+
+    <p class="small">
+
+        Guest Member uses the original attendance meal.
+        Bonus Meal is NOT used for Guest Member.
+
+    </p>
+
+
+    <!-- GUEST SELECT -->
+
+    <div class="no-print">
+
+        <label>
+            <b>👤 Member:</b>
+        </label>
+
+        <br>
+
+        <select id="guestMember">
+
+            <option value="">
+                -- Select Member --
+            </option>
+
+            <option value="Ramu">Ramu</option>
+            <option value="Nabin">Nabin</option>
+            <option value="Sovon">Sovon</option>
+            <option value="Suman">Suman</option>
+            <option value="Riman">Riman</option>
+            <option value="Dipankar">Dipankar</option>
+            <option value="Krishna">Krishna</option>
+            <option value="Pradip">Pradip</option>
+            <option value="Santu">Santu</option>
+            <option value="Madhav">Madhav</option>
+            <option value="Deep">Deep</option>
+            <option value="Mohit">Mohit</option>
+            <option value="Suman 2">Suman 2</option>
+            <option value="Surojit">Surojit</option>
+            <option value="Bikash">Bikash</option>
+            <option value="Riju">Riju</option>
+
+        </select>
+
+        <br><br>
+
+        <button
+            type="button"
+            id="addGuest"
+            class="add-btn">
+
+            ➕ Add Guest
+
+        </button>
+
+    </div>
+
+
+    <!-- GUEST TABLE -->
+
+    <table id="guestTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Member</th>
+                <th>Original Meal</th>
+                <th>Total Meal</th>
+                <th>Meal Rate</th>
+                <th>Meal Charge</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="guestBody"></tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th>
+                    TOTAL
+                </th>
+
+                <th id="guestOriginalTotal">
+                    0
+                </th>
+
+                <th id="guestGrandTotal">
+                    0
+                </th>
+
+                <th>
+                    -
+                </th>
+
+                <th id="guestGrandCharge">
+                    ₹0.00
+                </th>
+
+                <th></th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+<!-- ================================================= -->
+<!-- CHARGES SHEET -->
+<!-- ================================================= -->
+
+<div class="report-box" style="background:#fff0f0;">
+
+    <h2>💰 Charges Sheet</h2>
+
+    <p class="small">
+        Charges are automatically loaded from Firebase.
+        Only selected month's charges are shown.
+    </p>
+
+    <table id="chargesTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Member</th>
+                <th>Charge Type</th>
+                <th>Amount</th>
+                <th>Month</th>
+                <th>Date</th>
+                <th>Remark</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="chargesBody">
+
+        </tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th colspan="2">
+                    TOTAL CHARGES
+                </th>
+
+                <th id="chargesGrandTotal">
+                    ₹0.00
+                </th>
+
+                <th colspan="3">
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- FINAL MEAL SHEET -->
+<!-- ================================================= -->
+
+<div class="report-box final-meal-section">
+
+    <h2>📋 Final Meal Sheet</h2>
+
+    <p class="small">
+
+        Final Meal Sheet combines
+        Regular Meal + Extra Meal + Guest Meal.
+
+        This sheet is used by the Final Sheet.
+
+    </p>
+
+    <table id="finalMealTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Member</th>
+                <th>Regular Meal</th>
+                <th>Extra Meal</th>
+                <th>Guest Meal</th>
+                <th>Final Total Meal</th>
+                <th>Meal Rate</th>
+                <th>Meal Charge</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="finalMealBody"></tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th>
+                    GRAND TOTAL
+                </th>
+
+                <th id="finalRegularTotal">
+                    0
+                </th>
+
+                <th id="finalExtraTotal">
+                    0
+                </th>
+
+                <th id="finalGuestTotal">
+                    0
+                </th>
+
+                <th id="finalMealTotal">
+                    0
+                </th>
+
+                <th>
+                    -
+                </th>
+
+                <th id="finalMealChargeTotal">
+                    ₹0.00
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- ESTABLISHMENT -->
+<!-- ================================================= -->
+
+<div class="report-box establishment-section">
+
+    <h2>🏠 Establishment Calculation</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Particular</th>
+                <th>Amount</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+
+                <td>
+                    🏠 Monthly Expenses
+                </td>
+
+                <td id="estMonthlyExpense">
+                    ₹0.00
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    👩‍🍳 Masi Meal Charge
+                </td>
+
+                <td id="estMasiCharge">
+                    ₹2200.00
+                </td>
+
+            </tr>
+
+            <tr class="total-row">
+
+                <td>
+                    Total Establishment Cost
+                </td>
+
+                <td id="estTotal">
+                    ₹0.00
+                </td>
+
+            </tr>
+
+            <tr class="establishment-row">
+
+                <td>
+                    👥 Total Members
+                </td>
+
+                <td>
+                    16
+                </td>
+
+            </tr>
+
+            <tr class="establishment-row">
+
+                <td>
+                    🏠 Establishment Per Member
+                </td>
+
+                <td id="estPerMember">
+                    ₹0.00
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <p class="small">
+
+        Establishment Per Member =
+        (Monthly Expenses + Masi Meal Charge) ÷ 16
+
+    </p>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- FINAL SHEET -->
+<!-- ================================================= -->
+
+<div class="report-box final-section">
+
+    <h2>📊 Final Sheet</h2>
+
+    <table id="finalTable">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Total Meal</th>
+                <th>Extra Meal</th>
+                <th>Meal Rate</th>
+                <th>Meal Charge</th>
+                <th>Charges</th>
+                <th>Establishment</th>
+                <th>Total Expenses</th>
+                <th>Income</th>
+                <th>Remarks</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="finalBody"></tbody>
+
+        <tfoot>
+
+            <tr class="total-row">
+
+                <th>
+                    GRAND TOTAL
+                </th>
+
+                <th id="sheetTotalMeal">
+                    0
+                </th>
+
+                <th id="sheetTotalExtra">
+                    0
+                </th>
+
+                <th>
+                    -
+                </th>
+
+                <th id="sheetTotalMealCharge">
+                    ₹0.00
+                </th>
+
+                <th id="sheetTotalCharges">
+                    ₹0.00
+                </th>
+
+                <th id="sheetTotalEstablishment">
+                    ₹0.00
+                </th>
+
+                <th id="sheetTotalExpenses">
+                    ₹0.00
+                </th>
+
+                <th id="sheetTotalIncome">
+                    ₹0.00
+                </th>
+
+                <th id="sheetFinalRemark">
+                    -
+                </th>
+
+            </tr>
+
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- SAVE -->
+<!-- ================================================= -->
+
+<div class="report-box no-print">
+
+    <button
+        type="button"
+        id="saveReport"
+        class="add-btn">
+
+        💾 Save Final Report
+
+    </button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- JS -->
+<!-- ================================================= -->
+
+<script
+    type="module"
+    src="final-report.js">
+</script>
+
+</body>
+
+</html> 

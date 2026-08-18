@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Kundu Mees Attendance</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<!-- ================================================= -->
+<!-- HEADER -->
+<!-- ================================================= -->
+
+<h1>🏠 Kundu Mees</h1>
+
+<h2>📋 Daily Attendance</h2>
+
+
+<!-- ================================================= -->
+<!-- DATE -->
+<!-- ================================================= -->
+
+<div class="date-section">
+
+    <label for="attendanceDate">
+        <b>📅 Select Date:</b>
+    </label>
+
+    <br><br>
+
+    <input
+        type="date"
+        id="attendanceDate"
+    >
+
+</div>
+
+
+<br>
+
+
+<!-- ================================================= -->
+<!-- REGULAR ATTENDANCE -->
+<!-- ================================================= -->
+
+<h2>👥 Regular Attendance</h2>
+
+
+<table id="attendanceTable">
+
+    <thead>
+
+        <tr>
+            <th>Name</th>
+            <th>🌞 Day</th>
+            <th>🌙 Night</th>
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+        <tr>
+            <td>Ramu</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Nabin</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Suman</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Riman</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Dipankar</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Krishna</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Pradip</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Santu</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Madhav</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Deep</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Mohit</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Suman 2</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Surojit</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Bikash</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Riju</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Sovon</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>Masi</td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+            <td>
+                <button type="button" class="toggle">❌</button>
+            </td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+
+<br>
+
+
+<!-- ================================================= -->
+<!-- TOTAL MEAL -->
+<!-- ================================================= -->
+
+<div id="totalMealSummary">
+
+    <h3>🍽️ Today's Total Meal</h3>
+
+
+    <p>
+        🌞 Day Meal:
+        <strong id="totalDayMeal">0</strong>
+    </p>
+
+
+    <p>
+        🌙 Night Meal:
+        <strong id="totalNightMeal">0</strong>
+    </p>
+
+
+    <p>
+        🍽️ Total Meal:
+        <strong id="totalMeal">0</strong>
+    </p>
+
+</div>
+
+
+<hr>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEAL -->
+<!-- ================================================= -->
+
+<h2>🍽️ Extra Meal</h2>
+
+
+<p>
+    <small>
+        Extra meal is optional.
+        If there is no extra meal today,
+        leave this section empty and press
+        Save Attendance.
+    </small>
+</p>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEMBER -->
+<!-- ================================================= -->
+
+<label for="extraMember">
+
+    <b>👤 Member:</b>
+
+</label>
+
+
+<br>
+
+
+<select id="extraMember">
+
+    <option value="">
+        -- Select Member --
+    </option>
+
+    <option value="Ramu">Ramu</option>
+    <option value="Nabin">Nabin</option>
+    <option value="Suman">Suman</option>
+    <option value="Riman">Riman</option>
+    <option value="Dipankar">Dipankar</option>
+    <option value="Krishna">Krishna</option>
+    <option value="Pradip">Pradip</option>
+    <option value="Santu">Santu</option>
+    <option value="Madhav">Madhav</option>
+    <option value="Deep">Deep</option>
+    <option value="Mohit">Mohit</option>
+    <option value="Suman 2">Suman 2</option>
+    <option value="Surojit">Surojit</option>
+    <option value="Bikash">Bikash</option>
+    <option value="Riju">Riju</option>
+    <option value="Sovon">Sovon</option>
+    <option value="Masi">Masi</option>
+
+</select>
+
+
+<br><br>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEAL TIME -->
+<!-- ================================================= -->
+
+<label for="extraTime">
+
+    <b>🌞🌙 Meal Time:</b>
+
+</label>
+
+
+<br>
+
+
+<select id="extraTime">
+
+    <option value="">
+        -- Select Day / Night --
+    </option>
+
+    <option value="day">
+        🌞 Day
+    </option>
+
+    <option value="night">
+        🌙 Night
+    </option>
+
+</select>
+
+
+<br><br>
+
+
+<!-- ================================================= -->
+<!-- EXTRA QUANTITY -->
+<!-- ================================================= -->
+
+<label for="extraQuantity">
+
+    <b>🔢 Quantity:</b>
+
+</label>
+
+
+<br>
+
+
+<select id="extraQuantity">
+
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+
+</select>
+
+
+<br><br>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEAL TYPE -->
+<!-- ================================================= -->
+
+<label for="extraMeal">
+
+    <b>🍽️ Meal Type:</b>
+
+</label>
+
+
+<br>
+
+
+<select id="extraMeal">
+
+    <option value="">
+        -- Select Meal --
+    </option>
+
+    <option value="egg">
+        🥚 Egg
+    </option>
+
+    <option value="fish">
+        🐟 Fish
+    </option>
+
+    <option value="chicken">
+        🍗 Chicken
+    </option>
+
+</select>
+
+
+<br><br>
+
+
+<!-- ================================================= -->
+<!-- ADD EXTRA -->
+<!-- ================================================= -->
+
+<button
+    type="button"
+    id="addExtra"
+>
+
+    ➕ Add Extra Meal
+
+</button>
+
+
+<br><br>
+
+
+<!-- ================================================= -->
+<!-- EXTRA MEAL LIST -->
+<!-- ================================================= -->
+
+<h3>📋 Today's Extra Meals</h3>
+
+
+<table id="extraTable">
+
+    <thead>
+
+        <tr>
+
+            <th>Member</th>
+
+            <th>Day/Night</th>
+
+            <th>Quantity</th>
+
+            <th>Meal</th>
+
+            <th>Action</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody id="extraList">
+
+    </tbody>
+
+</table>
+
+
+<br>
+
+
+<!-- ================================================= -->
+<!-- SAVE -->
+<!-- ================================================= -->
+
+<button
+    type="button"
+    id="save"
+>
+
+    💾 Save Attendance
+
+</button>
+
+
+<!-- ================================================= -->
+<!-- MONTHLY REPORT -->
+<!-- ================================================= -->
+
+<button
+    type="button"
+    onclick="location.href='report.html'"
+>
+
+    📊 Monthly Report
+
+</button>
+
+
+<!-- ================================================= -->
+<!-- TOTAL MEAL REPORT -->
+<!-- ================================================= -->
+
+<button
+    type="button"
+    onclick="location.href='total-meal-report.html'"
+>
+
+    🍽️ Total Meal Report
+
+</button>
+
+
+<hr>
+
+
+<!-- ================================================= -->
+<!-- SCRIPT -->
+<!-- ================================================= -->
+
+<script
+    type="module"
+    src="script.js"
+></script>
+
+
+</body>
+
+</html>

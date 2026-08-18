@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Sheet</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{
+font-family:Arial;
+padding:20px;
+max-width:800px;
+margin:auto;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+th,td{
+border:1px solid #000;
+padding:12px;
+font-size:20px;
+text-align: center;
+}
+th{
+background:#eee;
+text-align: left;
+}
+.total{
+font-weight:bold;
+background:#dff0d8;
+}
+button{
+padding:12px 20px;
+font-size:18px;
+margin-top:20px;
+cursor: pointer;
+}
+.controls {
+margin-top: 20px;
+text-align: center;
+font-size: 20px;
+}
+.controls input {
+font-size: 18px;
+padding: 8px;
+width: 200px;
+}
+#loadBalance {
+background-color: #ffc107;
+border: 1px solid #333;
+font-weight: bold;
+border-radius: 4px;
+}
+@media print {
+button, .controls, hr {
+display: none !important;
+}
+}
+</style>
+</head>
+<body>
+
+<h1>📒 Kundu Mees</h1>
+<h2>Balance Sheet</h2>
+
+<button onclick="location.href='admin.html'">
+⬅ Back
+</button>
+<hr>
+
+<!-- 🆕 Added Load and Month Controls -->
+<div class="controls">
+    <label><b>📅 Select Month: </b></label>
+    <input type="month" id="balanceMonth">
+    <button id="loadBalance">🔄 Load Sheet</button>
+</div>
+
+<table>
+<tr>
+<th>Total Income</th>
+<td id="income">₹0.00</td>
+</tr>
+<tr>
+<th>Regular Expenses</th>
+<td id="regular">₹0.00</td>
+</tr>
+<tr>
+<th>Monthly Expenses</th>
+<td id="monthly">₹0.00</td>
+</tr>
+<tr>
+<th>Rice</th>
+<td id="rice">₹0.00</td>
+</tr>
+<tr class="total">
+<th>Total Expenses</th>
+<td id="expenses">₹0.00</td>
+</tr>
+<tr class="total">
+<th>Remaining Balance</th>
+<td id="balance">₹0.00</td>
+</tr>
+</table>
+
+<br>
+<button onclick="window.print()">
+🖨 Print Balance Sheet
+</button>
+
+<script type="module" src="balance.js"></script>
+</body>
+</html>
